@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark {
+            background-color: #333;
+            color: #fff;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+            border: 1px solid #aaa;
+            text-align: center;
+            max-width: 800px;
+            margin: 50px auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        form:hover {
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 10px;
+            font-size: 24px;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            font-weight: bold;
+        }
+
+        input {
+            width: calc(100% - 40px);
+            padding: 20px;
+            margin: 10px 0 40px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            font-size: 24px;
+        }
+
+        input[type="submit"] {
+            background-color: #e74c3c;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            border: none;
+            z-index: 0;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .radio-group input[type="radio"] {
+            box-shadow: none;
+            margin-right: 10px;
+            transform: scale(1.5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items:center;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+        .checkbox-group input {
+            display:inline-block;
+            align-items: baseline;
+            margin: 0%;
+        }
+
+        .dark-mode-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .dark-mode-toggle {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #555;
+        }
+
+        .dark-mode-toggle i {
+            font-size: 30px;
+        }
+
+        .dark-mode-label {
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            form {
+                width: 90%;
+                margin: 20px auto;
+            }
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-group label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dark-mode-toggle-container">
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </div>
+    <div class="dark-mode-label">Dark Mode</div>
+</div>
+
+<form id="signupForm">
+
+    <h1>Sign Up</h1>
+
+    <div class="first-last-name">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="date-of-birth">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+    </div>
+
+    <div class="password-toggle">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <i class="fas fa-eye" id="passwordToggle"></i>
+    </div>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <div class="radio-group">
+        <label for="male">Male</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+
+        <label for="female">Female</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+    </div>
+<br>
+    <div class="checkbox-group">
+        <input type="checkbox" id="confirmSignUp" name="confirmSignUp" value="confirm" required>
+        <center><label for="confirmSignUp">Confirm Account Sign-Up</label>
+   </div>
+
+    <input type="submit" value="Sign Up">
+
+</form>
+
+<script>
+
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark');
+    }
+
+    document.getElementById('passwordToggle').addEventListener('click', function () {
+        var passwordInput = document.getElementById('password');
+        var passwordToggleIcon = document.getElementById('passwordToggle');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggleIcon.classList.remove('fa-eye');
+            passwordToggleIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordToggleIcon.classList.remove('fa-eye-slash');
+            passwordToggleIcon.classList.add('fa-eye');
+        }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Check if all necessary information is filled
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var dob = document.getElementById('dob').value;
+        var password = document.getElementById('password').value;
+        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var confirmSignUp = document.getElementById('confirmSignUp').checked;
+
+        if (firstName && lastName && dob && password && username && email && gender && confirmSignUp) {
+            // Redirect the user to the "Thank You" page
+            window.location.href = 'Thankyou.html';
+        } else {
+            // Handle incomplete form data or show an error message
+            alert('Please fill in all required fields and confirm sign-up');
+        }
+    });
+
+</script>
+
+</body>
+</html>

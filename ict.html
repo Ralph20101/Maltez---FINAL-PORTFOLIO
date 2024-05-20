@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ralph Christian R. Maltez - Bio Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f7f7f7;
+        }
+
+        .hero-section {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #ffcc6a, #c7e98e);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .intro-section {
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: -100px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav a {
+            margin: 0 20px;
+            color: #555;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .nav a:hover {
+            color: #333;
+            transform: scale(1.1);
+        }
+
+        .content-section {
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .content-section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .skills-section, .hobbies-section, .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill, .hobby, .contact-icon {
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-family: 'Arial', sans-serif;
+            margin: 10px;
+            transition: all 0.3s;
+            position: relative;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b, #ffcc6a, #c7e98e);
+            background-size: 200% 200%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .skill:before, .hobby:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: -1;
+        }
+
+        .skill:hover, .hobby:hover, .contact-icon:hover {
+            transform: scale(1.05);
+            background-position: right center;
+            color: #fff;
+        }
+
+        .skills-section .skill:nth-child(odd) {
+            background: linear-gradient(45deg, #ff6c9e, #fe9a8b, #fec573, #95e38b);
+            background-size: 200% 200%;
+        }
+
+        .skills-section .skill:nth-child(odd):hover {
+            background-position: right center;
+        }
+
+        .hobbies-section .hobby:nth-child(odd) {
+            background: linear-gradient(45deg, #5f63ec, #9665ec, #ec6ca8, #ecb565);
+            background-size: 200% 200%;
+        }
+
+        .hobbies-section .hobby:nth-child(odd):hover {
+            background-position: right center;
+        }
+
+        .hobbies ul {
+            columns: 2;
+            padding-left: 0;
+        }
+
+        .hobbies li {
+            list-style: none;
+        }
+
+        .contact-details p {
+            font-size: 1.2em;
+            margin: 5px 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .social-media-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            max-width: 200px;
+            max-height: auto;
+        }
+
+        .social-media-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            filter: grayscale(0%);
+        }
+
+        .social-media-icon:hover {
+            transform: scale(2.0);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Particle animation background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            transform-origin: 50% 50%;
+        }
+        .social-media-icon {
+      width: 60px; /* Adjust the width */
+      height: 60px; /* Adjust the height */
+      margin: 0 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      filter: grayscale(0%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="particles"></div>
+
+    <div id="home" class="hero-section">
+        <div>
+            <h1>Ralph Christian R. Maltez</h1>
+            <p>Passionate academic enthusiast with a dash of humor</p>
+        </div>
+        <img class="profile-picture" src="https://scontent.fcgy2-2.fna.fbcdn.net/v/t39.30808-6/381566905_1003054601026786_5798071440850433170_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeGlh4EarOe5HnMimz161PzZg4d5J0dNHIyDh3knR00cjIRN1xZDPf61IIdPLyXYyck&_nc_ohc=tnBLaQar3b4AX_Hd5Of&_nc_ht=scontent.fcgy2-2.fna&oh=00_AfD64GJ8ixAUva1AWeK1z6WASSx7iZgoJWx-yHY6xhsMSQ&oe=6528BD6D" alt="Ralph Maltez">
+    </div>
+
+    <div id="about" class="content-section intro-section">
+        <h2>About Me</h2>
+        <p>Hey, I'm Ralph. A passionate academic enthusiast with a penchant for serious dedication and a dash of humor. As a devoted workaholic, I thrive on the relentless pursuit of knowledge, delving into academic realms with unwavering determination. However, don't let the seriousness fool you for behind those diligent studies lies a quick wit and a knack for injecting laughter into even the most scholarly discussions. Armed with a sharp intellect and a playful sense of humor, I believe that a hearty laugh can be just as enlightening as any textbook. Balancing the scales of academia and humor, I am Ralph, a delightful paradox, proving that dedication and laughter are a perfect academic duo.</p>
+    </div>
+
+    <div id="skills" class="content-section">
+        <h2>Skills</h2>
+        <div class="skills-section">
+            <div class="skill">Research</div>
+            <div class="skill">Critical Thinking</div>
+            <div class="skill">Communication</div>
+            <div class="skill">Problem Solving</div>
+            <div class="skill">Leadership</div>
+            <div class="skill">Adaptability</div>
+            <div class="skill">Public Speaking</div>
+        </div>
+    </div>
+
+    <div id="hobbies" class="content-section">
+        <h2>Hobbies</h2>
+        <div class="hobbies-section">
+            <div class="hobby">Reading Poetry and Novels</div>
+            <div class="hobby">Studying and Taking Down Notes</div>
+            <div class="hobby">Coding</div>
+            <div class="hobby">Watching TV Shows and Movies</div>
+            <div class="hobby">Cooking and Eating</div>
+            <div class="hobby">Sleeping</div>
+            <div class="hobby">Exploring New Technologies</div>
+            <div class="hobby">Playing Musical Instruments</div>
+            <div class="hobby">Photography</div>
+            <div class="hobby">Traveling</div>
+            <div class="hobby">Drawing</div>
+            <div class="hobby">Gardening</div>
+            <div class="hobby"> Writing Poetry</div>
+
+        </div><br>
+    <a href="poetry_sample.html">Excerpt From The Burned Parts of Me - Ralph Maltez</a>
+    </div>
+    
+
+
+    <div id="contact" class="content-section">
+        <h2>Contact Information</h2>
+        <div class="contact-section" class="social-media-icon">
+            <a href="https://www.facebook.com/ralphchristian.maltez.71" target="_blank"><img class="social-media-icon" src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-facebook-social-media-icon-png-image_6315968.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/ralohhhhhh/?next=%2F" target="_blank"><img class="social-media-icon" src="https://www.theatresevern.co.uk/images/instagram.png" alt="Instagram"></a>
+            <a href="mailto:ralph.maltez5@gmail.com"><img class="social-media-icon" src="https://cdn.icon-icons.com/icons2/730/PNG/512/gmail_icon-icons.com_62758.png" alt="Email"></a>
+    
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        const navLinks = document.querySelectorAll('.nav a');
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - document.querySelector('.nav').offsetHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Particle animation background
+        const particlesContainer = document.querySelector('.particles');
+
+        const numParticles = 200;
+        for (let i = 0; i < numParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particlesContainer.appendChild(particle);
+            moveParticle(particle);
+        }
+
+        function moveParticle(particle) {
+            const xPos = Math.random() * window.innerWidth;
+            const yPos = Math.random() * window.innerHeight;
+            const speed = 0.1 + Math.random() * 0.5;
+            const size = Math.random() * 10;
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${xPos}px`;
+            particle.style.top = `${yPos}px`;
+
+            const animation = particle.animate([{
+                    transform: 'translate(-50%, -50%) scale(1)',
+                    opacity: 1
+                },
+                {
+                    transform: `translate(-50%, -50%) scale(0.5)`,
+                    opacity: 0
+                }
+            ], {
+                duration: speed * 1000,
+                iterations: Infinity,
+                direction: 'alternate',
+                easing: 'ease-in-out'
+            });
+        }
+    </script>
+
+    <script type="text/wasm">
+        // WebAssembly (C++) code here
+        (module
+            (func $add (param i32 i32) (result i32)
+                get_local 0
+                get_local 1
+                i32.add)
+            (export "add" (func $add))
+        )
+    </script>
+</body>
+
+</html>
